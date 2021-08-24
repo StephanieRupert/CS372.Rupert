@@ -4,6 +4,9 @@
 // Purpose:
 // Illustrate some of the bad things that can happen with
 // pointers
+// Used this site for help with "new" since I don't know
+// what I'm doing:
+// http://www.cs.ecu.edu/karl/3300/spr16/Notes/C/Array/heap.html 
 //
 #include <iostream>
 using namespace std;
@@ -16,7 +19,6 @@ int ary()
 	for (int i = 0; i < 100; i++)
 		{
 		arr[i] = 0;
-		//cout << *arr;
 		}
 
 	//second pointer to the first pointer's location in memory
@@ -62,11 +64,32 @@ int ary2()
 	}
 
 //Part 3
+string str()
+	{
+	//pointer to a string object and use
+	//'new' to create a new string on the stack
+	string *str = new string[100];
+
+	*str = "This is the string. Joy.";
+
+	return *str;
+	}
+
+//calling function
+void call(string str())
+	{
+	//string object set to be whatever is returned
+	//from the helper function
+	string strOb = str();
+
+	cout << strOb;
+	}	
 
 int main()
 	{
 	ary();
 	ary2();
+	call(*str);
 	
 	return 0;
 	}
